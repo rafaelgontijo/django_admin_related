@@ -10,7 +10,7 @@ from admin_related.meta import VERSION
 setup(
     name='django-admin-related',
     version=str(VERSION),
-    description='The "Django Admin Related" impede a exclusão de seus modelos se você tiver itens relacionados',
+    description='The "Django Admin Related" prevents you from deleting your models if you have related items',
     long_description=open('README.md', encoding='utf-8').read(),
     author='Shinneider Libanio da Silva',
     author_email='shinneider-libanio@hotmail.com',
