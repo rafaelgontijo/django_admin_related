@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 import json
 
 
-class BaseVerifyRelatedAdmin(ModelAdmin):
+class VerifyRelated(ModelAdmin):
     list_per_page = 20
 
     # remove original bulk delete (this no verify related before related)
