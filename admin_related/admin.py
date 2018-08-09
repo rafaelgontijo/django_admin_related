@@ -13,7 +13,7 @@ class VerifyRelated(ModelAdmin):
 
     # remove original bulk delete (this no verify related before related)
     def get_actions(self, request):
-        actions = super(BaseVerifyRelatedAdmin, self).get_actions(request)
+        actions = super(VerifyRelated, self).get_actions(request)
         if 'delete_selected' in actions:
             del actions['delete_selected']
         # Append new delete selected action
@@ -23,7 +23,7 @@ class VerifyRelated(ModelAdmin):
     # internal delete 
     def delete_model(self, request, obj):
         if not delete_model(self, request, obj):
-            super(BaseVerifyRelatedAdmin, self).delete_model(request, obj)
+            super(VerifyRelated, self).delete_model(request, obj)
 
     # internal delete response (removed messages)
     def response_delete(self, request, obj_display, obj_id):
