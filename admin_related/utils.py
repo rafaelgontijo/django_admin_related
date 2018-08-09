@@ -1,7 +1,7 @@
 from django.db.models.fields.reverse_related import ManyToOneRel, ManyToManyRel
 from django.contrib import messages
 from django.contrib.admin.actions import delete_selected
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 
 
 # Verify related
@@ -21,7 +21,7 @@ def has_related(obj):
 def bulk_delete(self, request, queryset):
     for obj in queryset.all():
         if has_related(obj):
-            messages.error(request, 'One or more selected items, contains linked templates, can not be deleted.')
+            messages.error(request, _('One or more selected items, contains linked templates, can not be deleted.'))
         
         else:
             request.POST._mutable=True
