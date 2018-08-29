@@ -14,7 +14,7 @@ setup(
     long_description=open('README.md', encoding='utf-8').read(),
     author='Shinneider Libanio da Silva',
     author_email='shinneider-libanio@hotmail.com',
-    url='https://github.com/shinneider/django_django_admin_related',
+    url='https://github.com/shinneider/django_admin_related',
     license='MIT',
     packages=find_packages() + [
         'django_admin_related/templates', 

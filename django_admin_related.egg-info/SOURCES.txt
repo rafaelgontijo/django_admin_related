@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+django_admin_related/__init__.py
+django_admin_related/admin.py
+django_admin_related/apps.py
+django_admin_related/meta.py
+django_admin_related/utils.py
+django_admin_related.egg-info/PKG-INFO
+django_admin_related.egg-info/SOURCES.txt
+django_admin_related.egg-info/dependency_links.txt
+django_admin_related.egg-info/top_level.txt
+django_admin_related/locale/pt_BR/LC_MESSAGES/django.mo
+django_admin_related/locale/pt_BR/LC_MESSAGES/django.po

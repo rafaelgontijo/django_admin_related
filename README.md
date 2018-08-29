@@ -1,6 +1,9 @@
 Django Admin Related
 ====================
 
+this project makes it impossible for the user to delete objects that contain other objects related by django admin
+Obs: this project works only in django admin
+
 # Install:
     pip install django-admin-related
 
