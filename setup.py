@@ -5,7 +5,7 @@ from io import open
 
 from setuptools import find_packages, setup
 
-from admin_related.meta import VERSION
+from django_admin_related.meta import VERSION
 
 setup(
     name='django-admin-related',
@@ -14,9 +14,12 @@ setup(
     long_description=open('README.md', encoding='utf-8').read(),
     author='Shinneider Libanio da Silva',
     author_email='shinneider-libanio@hotmail.com',
-    url='https://github.com/shinneider/django_admin_related',
+    url='https://github.com/shinneider/django_django_admin_related',
     license='MIT',
-    packages=find_packages(exclude=('tests.*', 'tests', 'example')),
+    packages=find_packages() + [
+        'django_admin_related/templates', 
+        'django_admin_related/locale'
+    ],
     install_requires=[
         # 'Django>=2.0',
         # 'Python>=3.5',

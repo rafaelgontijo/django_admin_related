@@ -1,2 +1,5 @@
 include LICENSE
 include README.md
+
+recursive-include django_admin_related/templates *+
+recursive-include django_admin_related/locale *
