@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib.admin import ModelAdmin
-from contrib.django_admin_related import utils as u
+from django_admin_related import utils as u
 from django.template.response import TemplateResponse
 from django.core.urlresolvers import reverse
 from django.contrib.admin.templatetags.admin_urls import add_preserved_filters
