@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.contrib.admin import ModelAdmin
-from django_admin_related import utils as u
+from contrib.django_admin_related import utils as u
 from django.template.response import TemplateResponse
-from django.urls import reverse
+from django.core.urlresolvers import reverse
 from django.contrib.admin.templatetags.admin_urls import add_preserved_filters
 from django.http import HttpResponseRedirect
+from django.contrib.admin.options import IS_POPUP_VAR
 import json
 
 
@@ -26,37 +27,28 @@ class VerifyRelated(ModelAdmin):
         if not u.delete_model(self, request, obj):
             super(VerifyRelated, self).delete_model(request, obj)
 
-    # internal delete response (removed messages)
     def response_delete(self, request, obj_display, obj_id):
         """
-        Determine the HttpResponse for the delete_view stage.
+        Determines the HttpResponse for the delete_view stage.
         """
+
         opts = self.model._meta
 
-        if '_popup' in request.POST:
-            popup_response_data = json.dumps({
+        if IS_POPUP_VAR in request.POST:
+            return SimpleTemplateResponse('admin/popup_response.html', {
                 'action': 'delete',
-                'value': str(obj_id),
+                'value': escape(obj_id),
             })
-            return TemplateResponse(request, self.popup_response_template or [
-                'admin/%s/%s/popup_response.html' % (opts.app_label, opts.model_name),
-                'admin/%s/popup_response.html' % opts.app_label,
-                'admin/popup_response.html',
-            ], {
-                'popup_response_data': popup_response_data,
-            })
-
 
         if self.has_change_permission(request, None):
-            post_url = reverse(
-                'admin:%s_%s_changelist' % (opts.app_label, opts.model_name),
-                current_app=self.admin_site.name,
-            )
+            post_url = reverse('admin:%s_%s_changelist' %
+                               (opts.app_label, opts.model_name),
+                               current_app=self.admin_site.name)
             preserved_filters = self.get_preserved_filters(request)
             post_url = add_preserved_filters(
                 {'preserved_filters': preserved_filters, 'opts': opts}, post_url
             )
         else:
-            post_url = reverse('admin:index', current_app=self.admin_site.name)
-
+            post_url = reverse('admin:index',
+                               current_app=self.admin_site.name)
         return HttpResponseRedirect(post_url)
