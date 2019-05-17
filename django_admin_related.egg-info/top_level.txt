@@ -1,3 +1,0 @@
-django_admin_related
-django_admin_related/locale
-django_admin_related/templates
